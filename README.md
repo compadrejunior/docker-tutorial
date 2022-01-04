@@ -156,7 +156,15 @@ This will start a NGINX container for the first time.
 docker run --publish 80:80 nginx
 ```
 
-**Explaining**: docker will check if an image of name nginx exist locally and download if it does not. It will routes the traffic from your local machine port 80 to the container port 80. If it succeed the container will run and you can test you application by typing http://localhost on your browser.
+**Explaining**: When you run the docker run command we just ran, the following will happen:
+
+- Docker will check if an image of name nginx exist locally.
+- If it doesn't find one it it will be downloaded from the registry. In our case, Docker Hub.
+- It will check if the specified version exists in Docker Hub. Since we didn't specify one, it will get the latest version.
+- Creates the container and prepare to start.
+- Gives it a virtual IP on a private network inside docker engine.
+- It will routes the traffic from your local machine port 80 to the container port 80. If it succeed the container will run and you can test you application by typing http://localhost on your browser.
+- Start the command defined in the CMD in the image Dockerfile.
 
 If you already have an application or another container running on port 80, you will get an error a bind error message:
 
@@ -186,7 +194,7 @@ The CONTAINER ID is the short reference used to stop, start and manage the conta
 
 😄 **Fun facts**: youthful_wozniak is a reference to [Steve Wozniak](https://en.wikipedia.org/wiki/Steve_Wozniak). Docker will create a a new random container name, honoring engineers and scientists, every time you run a docker run without specifying a name.
 
-## Specifying a name to the container
+## Specifying a name
 
 You can specify a name with the option --name on the docker run command.
 
