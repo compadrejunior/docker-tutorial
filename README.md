@@ -194,7 +194,7 @@ The CONTAINER ID is the short reference used to stop, start and manage the conta
 
 😄 **Fun facts**: youthful_wozniak is a reference to [Steve Wozniak](https://en.wikipedia.org/wiki/Steve_Wozniak). Docker will create a a new random container name, honoring engineers and scientists, every time you run a docker run without specifying a name.
 
-## Specifying a name
+### Specifying a name
 
 You can specify a name with the option --name on the docker run command.
 
