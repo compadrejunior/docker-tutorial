@@ -142,11 +142,11 @@ Docker is composed of many components which will be needed to run, manage, pull 
 - Container: container is an instance of an image that is running on the host machine. One image can have multiple instances of the same container.
 - Registry: is a private or public service to publish, download and manage images.
 - Dockerfile: a file used to create a new container image.
-- Other components: many other tools will be described used as necessary in this tutorial but, for the sake of clarity, we will only mention them when needed.
+- Other components: many other tools will be described in this tutorial but, for the sake of clarity, we will only mention them when needed.
 
 ## Container Commands
 
-These are basic container commands for pulling, running and stopping a container based on a popular existing image.
+These are basic container commands for pulling, running and stopping a container based on a popular existing image. E.g. NGINX.
 
 ### Starting a new Container
 
@@ -156,7 +156,14 @@ This will start a NGINX container for the first time.
 docker run --publish 80:80 nginx
 ```
 
-**Explaining**: docker will check if an image of name nginx exist locally and download if it does not. It will routes the traffic from your local machine port 80 to the container port 80. If it succeed the container will run and you can test you application by typing http://localhost on your browser, otherwise, you get an error informing any problem such as bind error (if your local port is already in use).
+**Explaining**: docker will check if an image of name nginx exist locally and download if it does not. It will routes the traffic from your local machine port 80 to the container port 80. If it succeed the container will run and you can test you application by typing http://localhost on your browser.
+
+If you already have an application or another container running on port 80, you will get an error a bind error message:
+
+```bash
+b0d0ff929f3b1b9813261484262649fad7a4c89cdfff781876a1da05d8a61398
+docker: Error response from daemon: driver failed programming external connectivity on endpoint youthful_wozniak (2b47264c3cd97d7443411be979c60e490b40721f157926c1f217255435f1556f): Bind for 0.0.0.0:80 failed: port is already allocated.
+```
 
 To detach from the container terminal just press Ctrl+C. If it fails, you can list the running containers and stop it or run the container in the detached mode as described in the following topics.
 
@@ -175,9 +182,24 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 cc3a0dc43716   nginx     "/docker-entrypoint.…"   45 minutes ago   Up 2 minutes   0.0.0.0:80->80/tcp   youthful_wozniak
 ```
 
-The CONTAINER ID is the short reference used to stop, start and manage the container. The NAMES field will list the names assigned to the container. They can also be used to reference the container. If you do not specify a name on the docker run command, as we did previously, it will generate a random name. Eg. youthful_wozniak. You can specify a name with the option --name on the docker run command.
+The CONTAINER ID is the short reference used to stop, start and manage the container. The NAMES field will list the names assigned to the container. They can also be used to reference the container. If you do not specify a name on the docker run command, as we did previously, it will generate a random name. Eg. youthful_wozniak.
 
 😄 **Fun facts**: youthful_wozniak is a reference to [Steve Wozniak](https://en.wikipedia.org/wiki/Steve_Wozniak). Docker will create a a new random container name, honoring engineers and scientists, every time you run a docker run without specifying a name.
+
+## Specifying a name to the container
+
+You can specify a name with the option --name on the docker run command.
+
+```bash
+docker run --publish 80:80 --detach --name nginx nginx
+```
+
+If the name is already in use, you will get the following error message:
+
+```bash
+docker: Error response from daemon: Conflict. The container name "/nginx" is already in use by container "359841bdab5b89041d212f50a2feaf052ea84f2cf86f729c785db8a1ae3751c7". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+```
 
 ### Listing all containers
 
@@ -196,7 +218,7 @@ f61f3b04b56b   nginx     "/docker-entrypoint.…"   About an hour ago   Exited (
 cc3a0dc43716   nginx     "/docker-entrypoint.…"   3 hours ago         Up 59 minutes                  0.0.0.0:80->80/tcp   youthful_wozniak
 ```
 
-## Stopping a container
+### Stopping a container
 
 To stop a container, use the docker stop command following by its NAME or CONTAINER ID. See the examples bellow:
 
@@ -210,7 +232,7 @@ or
 docker stop cc3a0dc43716
 ```
 
-## Running a container with a detached terminal
+### Running a container with a detached terminal
 
 The following command will run the container and immediately return to the local terminal prompt.
 
@@ -226,7 +248,7 @@ c3ef23e3e9a92828de363d7869f6043769ec27d046d503ba679a3ac6f4ac2285
 
 The output is a full CONTAINER ID reference code.
 
-## Running an existing container
+### Running an existing container
 
 When you stop a container by running the docker stop command, it will not destroy the existing container but instead it will stop it (putting it in a stopped state). So if you run docker run again it will try to create a new container and fail if the port is already in use or succeed if no other containers are running on the assigned port.
 
@@ -238,9 +260,41 @@ Fo example:
 docker start youthful_wozniak
 ```
 
+### Viewing the container logs
+
+To see the log for a container run docker container logs command following by the container name.
+
+```bash
+docker container logs nginx
+```
+
+### Listing the processes inside a container
+
+To see a list of running processes inside a container use the command docker container top following by its name.
+
+```bash
+docker container top nginx
+```
+
+### Safely deleting a container
+
+To safely delete a container, run the docker container rm command informing the container name.
+
+```bash
+docker container rm nginx
+```
+
+Notice that, if the container is running, Docker will prevent it from deletion.
+
+Sample output:
+
+```bash
+Error response from daemon: You cannot remove a running container 359841bdab5b89041d212f50a2feaf052ea84f2cf86f729c785db8a1ae3751c7. Stop the container before attempting removal or force remove
+```
+
 ## Docker Desktop GUI
 
-The Docker Desktop GUI can also be used to manage, start and stop containers On Windows and Mac. See the following links:
+The Docker Desktop GUI can also be used to manage, start and stop containers On Windows and Mac wit a friendly user interface. See the following links:
 
 - [Docker Desktop for Window](https://docs.docker.com/desktop/windows/)
 - [Docker Desktop for Mac](https://docs.docker.com/desktop/mac/)
