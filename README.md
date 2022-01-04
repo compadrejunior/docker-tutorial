@@ -126,7 +126,7 @@ WARNING: No blkio throttle.read_iops_device support
 WARNING: No blkio throttle.write_iops_device support
 ```
 
-## Docker help
+### Docker help
 
 To see a list of common usage of docker CLI use the following command:
 
