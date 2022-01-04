@@ -175,6 +175,22 @@ docker: Error response from daemon: driver failed programming external connectiv
 
 To detach from the container terminal just press Ctrl+C. If it fails, you can list the running containers and stop it or run the container in the detached mode as described in the following topics.
 
+### Starting a specific version of an image
+
+You can specify the version of the image when running a new container.
+
+You can check available versions in the public registry, for instance Docker Hub.
+
+For the NGINX application you chan check the link https://hub.docker.com/_/nginx to see a list of available versions and some valuable instructions.
+
+Bellow we have an example in how to specify the vertion of an image by tag value after the name, separeated by colon character.
+
+```
+docker run --publish 80:80 nginx:1.20.2
+```
+
+Remind that the value after the colon can be any tag such as latest, for the most recent version or stable for a version that is unchanged and working.
+
 ### Listing running containers
 
 To view a list of running containers type the following:
@@ -194,7 +210,7 @@ The CONTAINER ID is the short reference used to stop, start and manage the conta
 
 😄 **Fun facts**: youthful_wozniak is a reference to [Steve Wozniak](https://en.wikipedia.org/wiki/Steve_Wozniak). Docker will create a a new random container name, honoring engineers and scientists, every time you run a docker run without specifying a name.
 
-### Specifying a name
+### Specifying a name for the container
 
 You can specify a name with the option --name on the docker run command.
 
