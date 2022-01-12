@@ -2,13 +2,39 @@
 
 This repo contains Docker basic tutorials and sample files for beginners.
 
+## Table of Contents
+
+- [Docker Tutorial](#docker-tutorial)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Install](#install)
+  - [Basic commands](#basic-commands)
+    - [Docker version](#docker-version)
+    - [Docker info](#docker-info)
+    - [Docker help](#docker-help)
+  - [Docker Basic Components](#docker-basic-components)
+  - [Container Commands](#container-commands)
+    - [Starting a new Container](#starting-a-new-container)
+    - [Starting a specific version of an image](#starting-a-specific-version-of-an-image)
+    - [Listing running containers](#listing-running-containers)
+    - [Specifying a name for the container](#specifying-a-name-for-the-container)
+    - [Listing all containers](#listing-all-containers)
+    - [Stopping a container](#stopping-a-container)
+    - [Running a container with a detached terminal](#running-a-container-with-a-detached-terminal)
+    - [Running an existing container](#running-an-existing-container)
+    - [Viewing the container logs](#viewing-the-container-logs)
+    - [Listing the processes inside a container](#listing-the-processes-inside-a-container)
+    - [Safely deleting a container](#safely-deleting-a-container)
+  - [Docker Desktop GUI](#docker-desktop-gui)
+  - [Next Topics](#next-topics)
+
 ## Overview
 
-These steps will guide you in simple Docker tasks for development and administration. To know more about docker follow the link https://docs.docker.com/get-started/overview/
+These steps will guide you in simple Docker tasks for development and administration. To know more about docker, check the [Docker Overview](https://docs.docker.com/get-started/overview/) documentation.
 
 ## Install
 
-Install docker following the steps from https://docs.docker.com/get-docker/
+Install docker following the steps from [Get Docker](https://docs.docker.com/get-docker/) page.
 
 ## Basic commands
 
@@ -163,7 +189,7 @@ docker run --publish 80:80 nginx
 - It will check if the specified version exists in Docker Hub. Since we didn't specify one, it will get the latest version.
 - Creates the container and prepare to start.
 - Gives it a virtual IP on a private network inside docker engine.
-- It will routes the traffic from your local machine port 80 to the container port 80. If it succeed the container will run and you can test you application by typing http://localhost on your browser.
+- It will routes the traffic from your local machine port 80 to the container port 80. If it succeed the container will run and you can test you application by typing `http://localhost` on your browser.
 - Start the command defined in the CMD in the image Dockerfile.
 
 If you already have an application or another container running on port 80, you will get an error a bind error message:
@@ -181,11 +207,11 @@ You can specify the version of the image when running a new container.
 
 You can check available versions in the public registry, for instance Docker Hub.
 
-For the NGINX application you chan check the link https://hub.docker.com/_/nginx to see a list of available versions and some valuable instructions.
+For the NGINX application you chan check the [Docker Hub NGINX Image](https://hub.docker.com/_/nginx) page to see a list of available versions and some valuable instructions.
 
-Bellow we have an example in how to specify the vertion of an image by tag value after the name, separeated by colon character.
+Bellow we have an example in how to specify the version of an image by tag value after the name, separated by colon character.
 
-```
+```bash
 docker run --publish 80:80 nginx:1.20.2
 ```
 
@@ -322,3 +348,9 @@ The Docker Desktop GUI can also be used to manage, start and stop containers On 
 
 - [Docker Desktop for Window](https://docs.docker.com/desktop/windows/)
 - [Docker Desktop for Mac](https://docs.docker.com/desktop/mac/)
+
+## Next Topics
+
+Check the list below to dive deep in Docker commands and tasks:
+
+1. [CLI Process Monitoring](/cli-process-monitoring/readme.md)
