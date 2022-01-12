@@ -26,7 +26,7 @@ This repo contains Docker basic tutorials and sample files for beginners.
     - [Listing the processes inside a container](#listing-the-processes-inside-a-container)
     - [Safely deleting a container](#safely-deleting-a-container)
   - [Docker Desktop GUI](#docker-desktop-gui)
-  - [Next Topics](#next-topics)
+  - [More Topics](#more-topics)
 
 ## Overview
 
@@ -349,8 +349,6 @@ The Docker Desktop GUI can also be used to manage, start and stop containers On 
 - [Docker Desktop for Window](https://docs.docker.com/desktop/windows/)
 - [Docker Desktop for Mac](https://docs.docker.com/desktop/mac/)
 
-## Next Topics
+## More Topics
 
-Check the list below to dive deep in Docker commands and tasks:
-
-1. [CLI Process Monitoring](/cli-process-monitoring/readme.md)
+For more tutorials, check the folders inside this repo.
