@@ -9,7 +9,7 @@
 - How can we replace containers without downtime (blue/green deploy)?
 - How can we control/track where containers get started?
 - How can we create cross-node virtual networks?
-- How ca we ensure only trusted servers run on our containers?
+- How can we ensure only trusted servers run on our containers?
 - How can we store secrets, keys, passwords and get them to the right container (and only that container)?
 
 ## Swarm Mode: Built-in Orchestration
@@ -77,7 +77,7 @@ Follow the steps bellow:
    ```bash
    docker service --help
    ```
-6. If suscced the command will list the COMMAND options. 
+6. If succeed the command will list the COMMAND options. 
     ```bash
     Usage:  docker service COMMAND
 
@@ -128,7 +128,7 @@ Follow the steps bellow:
     ```bash
     docker service update [service-id] --limit-memory 6MB
     ```
-    > **NOTE:** Remember to change the [service-id] with the respective service id. 
+    > **Note**: Remember to change the [service-id] with the respective service id. 
 15. To check the memory limit of the service run the following command overwriting the [service-id] with your service id. 
     ```bash
      docker service inspect --pretty [service-id]
